@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons'
 
-const SearchBar = ({ term, onTermChange }) => {
+const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     return (
         <View style={styles.backgroundStyle}> 
         <Ionicons style={styles.iconStyle} name="ios-search" />
@@ -13,7 +13,7 @@ const SearchBar = ({ term, onTermChange }) => {
             placeholder="Search"
             value={term}
             onChangeText={newTerm => onTermChange(newTerm)}
-            onEndEditing={() => console.log('submitted')}
+            onEndEditing={() => onTermSubmit(term)}
             />
         </View>
     )
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginTop:15,
         borderRadius:10,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 10,
     },
     inputStyle: {
         borderColor: 'black',
